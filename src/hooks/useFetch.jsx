@@ -2,7 +2,7 @@ import { useEffect, useState} from 'react';
 import getDataFromApi from './dataApi';
 import Spinner from '../components/spinner/Spinner';
 
-const useFetch = () => {
+const useFetch = (url) => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
