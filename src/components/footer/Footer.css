@@ -1,0 +1,68 @@
+.footer {
+    background-color: var(--black3);
+    padding: 30px 0;
+    color: white;
+    position: relative;
+}
+.footer .contentWrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.footer .contentWrapper .logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.footer .contentWrapper .logo img {
+    height: 30px;
+}
+.footer .contentWrapper .logo h1 {
+    color: var(--red);
+    font-size: 25px;
+    font-weight: 900;
+}
+.footer .contentWrapper .menuItems {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+.footer .contentWrapper .menuItems .item {
+    transition: all ease .5s;
+    cursor: pointer;
+    font-style: 12px;
+}
+.footer .contentWrapper .menuItems .item:hover{
+    color: var(--red);
+}
+.footer .contentWrapper .infoText {
+    font-size: 12px;
+    line-height: 20px;
+    opacity: 0.5;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.footer .contentWrapper .socialIcons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.footer .contentWrapper .socialIcons .icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all ease .5s;
+}
+.footer .contentWrapper .socialIcons .icon:hover {
+    box-shadow: 0 0 .625em var(--red);
+    color: var(--red);
+}
