@@ -1,0 +1,154 @@
+.carousel {
+    margin-bottom: 50px;
+}
+.carousel .contentWrapper {
+    position: relative;
+}
+.carousel .contentWrapper .arrow {
+    font-size: 30px;
+    color: black;
+    position: absolute;
+    cursor: pointer;
+    opacity: .5;
+    z-index: 1;
+    display: none;
+}
+.carousel .contentWrapper .arrow:hover {
+    opacity: .8;
+}
+.carousel .contentWrapper .carouselLeftNav {
+    left: 30px;
+}
+.carousel .contentWrapper .carouselRightNav {
+    right: 30px;
+}
+.carousel .contentWrapper .carouselItems {
+    display: flex;
+    gap: 10px;
+    overflow-y: hidden;
+    margin-right: -20px;
+    margin-left: -20px;
+    padding: 0 20px;
+}
+.carousel .carouselItems .item {
+    width: 125px;
+    cursor: pointer;
+    flex-shrink: 0;
+    background-color: var(--black2);
+    border-radius: 10px;
+}
+.carousel .carouselItems .item .posterBlock {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1.5;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 10px;
+}
+.carousel .carouselItems .item .posterBlock .lazy-load-image-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.carousel .carouselItems .item .posterBlock .lazy-load-image-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.carousel .carouselItems .item .posterBlock .circleRating {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: 30px;
+    background-color: white;
+    flex-shrink: 0;
+}
+.carousel .carouselItems .item .posterBlock .genres {
+    display: none;
+    position: relative;
+}
+.carousel .carouselItems .item .textBlock {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2px;
+}
+.carousel .carouselItems .item .textBlock .title {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.carousel .carouselItems .item .textBlock .date {
+    font-size: 12px;
+    opacity: .5;
+}
+
+.loadingSkeleton {
+    display: flex;
+    gap: 10px;
+    overflow-y: hidden;
+    margin-right: -20px;
+    margin-left: -20px;
+    padding: 0 20px;
+}
+.loadingSkeleton .skeletonItem {
+    width: 125px;
+    flex-shrink: 0;
+}
+.loadingSkeleton .skeletonItem .posterBlock {
+    border-radius: 12px;
+    width: 100%;
+    aspect-ratio: 1 / 1.5;
+    margin-bottom: 20px;
+}
+.loadingSkeleton .skeletonItem .textBlock {
+    display: flex;
+    flex-direction: column;
+}
+.loadingSkeleton .skeletonItem .textBlock .title {
+    width: 100%;
+    height: 20px;
+    margin-bottom: 10px;
+}
+.loadingSkeleton .skeletonItem .textBlock .date {
+    width: 75%;
+    height: 20px;
+}
+
+@media(min-width: 768px) {
+    .carousel .contentWrapper .arrow {
+        display: block;
+    }
+    .carousel .contentWrapper .carouselItems .item {
+        width: calc(20% - 15px);
+    }
+    .carousel .contentWrapper .carouselItems .item .posterBlock .circleRating {
+        width: 50px;
+        height: 50px;
+    }
+    .carousel .contentWrapper .carouselItems .item .posterBlock .genres {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: flex-end;
+    }
+
+    .loadingSkeleton {
+        gap: 20px;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    .loadingSkeleton .skeletonItem {
+        width: calc(20% - 15px);
+    }
+}

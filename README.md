@@ -13,3 +13,5 @@
     npm i react-router-dom
 
     npm i --save react-lazy-load-image-component
+
+    npm i react-circular-progressbar
