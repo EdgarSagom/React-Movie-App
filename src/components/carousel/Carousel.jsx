@@ -11,7 +11,7 @@ import Genres from '../genres/Genres';
 
 import './Carousel.css';
 
-export default function Carousel({ data, loading}) {
+export default function Carousel({ data, loading, endpoint}) {
     const carouselContainer = useRef();
     const {url} = useSelector((state) => state.home);
     const navigate = useNavigate();
@@ -58,7 +58,7 @@ export default function Carousel({ data, loading}) {
                             return (
                                 <div
                                     key={item.id}
-                                    className='item' onClick={() => navigate(`/${item.media_type}/${item.id}`)}>
+                                    className='item' onClick={() => navigate(`/${item.media_type || endpoint}/${item.id}`)}>
                                         <div className="posterBlock">
                                             <Img src={posterUrl}/>
                                             <CircleRating
