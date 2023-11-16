@@ -15,3 +15,7 @@
     npm i --save react-lazy-load-image-component
 
     npm i react-circular-progressbar
+
+    npm install dayjs
+
+    npm install react-player

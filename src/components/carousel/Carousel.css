@@ -4,13 +4,22 @@
 .carousel .contentWrapper {
     position: relative;
 }
+
+.carousel .contentWrapper .carouselTitle {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 25px;
+}
+
 .carousel .contentWrapper .arrow {
-    font-size: 30px;
-    color: black;
+    font-size: 40px;
+    color: var(--yellow);
     position: absolute;
     cursor: pointer;
     opacity: .5;
     z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
     display: none;
 }
 .carousel .contentWrapper .arrow:hover {
@@ -129,6 +138,12 @@
     .carousel .contentWrapper .arrow {
         display: block;
     }
+    .carousel .contentWrapper .carouselItems {
+        gap: 18px;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
     .carousel .contentWrapper .carouselItems .item {
         width: calc(20% - 15px);
     }
@@ -140,6 +155,9 @@
         display: flex;
         flex-flow: wrap;
         justify-content: flex-end;
+    }
+    .carousel .carouselItems .item .textBlock .title {
+        font-size: 20px;
     }
 
     .loadingSkeleton {
