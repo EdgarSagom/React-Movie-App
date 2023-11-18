@@ -4,7 +4,7 @@ import './Spinner.css';
 export default function Spinner() {
     return (
         <div className='spinner'>
-            <FaSpinner className={styles.spinning} size={60} />
+            <FaSpinner className='spinning' size={60} />
         </div>
     )
 }

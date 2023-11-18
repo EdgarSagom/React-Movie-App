@@ -19,3 +19,5 @@
     npm install dayjs
 
     npm install react-player
+
+    npm install --save react-infinite-scroll-component

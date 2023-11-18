@@ -19,11 +19,11 @@ function App() {
     console.log(url);
 
     useEffect(() => {
-        FetchApiConfig();
+        fetchApiConfig();
         genresCall();
     }, []);
 
-    const FetchApiConfig = () => {
+    const fetchApiConfig = () => {
         getDataFromApi('/configuration')
             .then((res) => {
                 console.log(res);
