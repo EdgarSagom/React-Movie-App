@@ -23,3 +23,5 @@
     npm install --save react-infinite-scroll-component
 
     npm install axios
+
+    npm i react-select

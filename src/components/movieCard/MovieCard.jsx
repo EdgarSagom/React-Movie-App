@@ -25,16 +25,22 @@ export default function MovieCard({ data, fromSearch, mediaType }) {
                         <Genres data={data.genre_ids.slice(0, 2)} />
                     </>
                 )}
+                {mediaType && (
+                    <>
+                        <CircleRating rating={data.vote_average.toFixed(1)} />
+                        <Genres data={data.genre_ids.slice(0, 2)} />
+                    </>
+                )}
             </div>
             <div className="textBlock">
                 <span className="title">{data.title || data.name}</span>
                 <span className="type">
-                    {data.media_type.toUpperCase()}
+                    {data.media_type ? data.media_type.toUpperCase() : ''}
                 </span>
                 <span className="date">
                     {data.release_date || data.first_air_date}
                 </span>
             </div>
         </div>
-    )
-}
+    );
+};
