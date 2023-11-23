@@ -56,12 +56,14 @@ export default function Carousel({ data, loading, endpoint, title }) {
                     <div className="carouselItems" ref={carouselContainer}>
                         {data?.map((item) => {
                             const posterUrl = item.poster_path ? url.poster + item.poster_path : PosterFallback;
+                            const posterHover = item.backdrop_path ? url.poster + item.backdrop_path : url.poster + item.poster_path;
                             return (
                                 <div
                                     key={item.id}
                                     className='item' onClick={() => navigate(`/${item.media_type || endpoint}/${item.id}`)}>
                                         <div className="posterBlock">
-                                            <Img src={posterUrl}/>
+                                            <Img className='posterImg' src={posterUrl}/>
+                                            <Img className='posterHover' src={posterHover} />
                                             <CircleRating
                                                 rating={item.vote_average.toFixed(1)}
                                             />

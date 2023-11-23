@@ -72,6 +72,16 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    transition: all ease 1s;
+}
+.carousel .item .posterBlock .lazy-load-image-background .posterImg:hover {
+    opacity: 0;
+}
+.carousel .item .posterBlock .lazy-load-image-background .posterHover {
+    opacity: 0;
+}
+.carousel .item .posterBlock .lazy-load-image-background .posterHover:hover {
+    opacity: 1;
 }
 .carousel .carouselItems .item .posterBlock .circleRating {
     width: 40px;
