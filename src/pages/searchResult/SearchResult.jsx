@@ -4,11 +4,10 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import './SearchResult.css';
 
-import getDataFromApi from "../../hooks/dataApi";
+import { getDataFromApi } from "../../hooks/dataApi";
 import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 import MovieCard from "../../components/movieCard/MovieCard";
 import Spinner from "../../components/spinner/Spinner";
-import noResults from "../../assets/no-results.png";
 
 export default function SearchResult() {
     const [data, setData] = useState(null);

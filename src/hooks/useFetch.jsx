@@ -1,5 +1,5 @@
 import { useEffect, useState} from 'react';
-import getDataFromApi from './dataApi';
+import { getDataFromApi } from './dataApi';
 import Spinner from '../components/spinner/Spinner';
 
 const useFetch = (url) => {

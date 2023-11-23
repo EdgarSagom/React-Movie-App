@@ -21,3 +21,5 @@
     npm install react-player
 
     npm install --save react-infinite-scroll-component
+
+    npm install axios
