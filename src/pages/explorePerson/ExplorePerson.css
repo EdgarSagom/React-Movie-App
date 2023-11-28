@@ -1,0 +1,37 @@
+.explorePage{
+    min-height: 700px;
+    padding-top: 100px;
+}
+.explorePage .pageHeader{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    flex-direction: column;
+}
+.explorePage .pageHeader .pageTitle {
+    font-size: 24px;
+    line-height: 34px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.explorePage .content {
+    display: flex;
+    flex-flow: wrap;
+    gap: 10px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+@media(min-width: 768px) {
+    .explorePage .pageHeader {
+        flex-direction: row;
+    }
+    .explorePage .pageHeader .pageTitle {
+        margin-bottom: 0;
+    }
+
+    .explorePage .content {
+        gap: 20px;
+    }
+}

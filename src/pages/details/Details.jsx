@@ -10,6 +10,7 @@ import Crew from './castCrew/Crew';
 import VideosSection from './videosSection/VideosSection';
 import Similar from './carousels/Similar';
 import Recommendation from './carousels/Recommendation';
+import KnownFor from './knownFor/KnownFor';
 
 export default function Details() {
     const { mediaType, id} = useParams();
@@ -19,11 +20,13 @@ export default function Details() {
     return (
         <div>
             <DetailsBanner video={data?.results?.[0]} crew={credits?.crew} />
-            <Cast data={credits?.cast} loading={creditsLoading} />
-            <Crew data={credits?.crew} loading={creditsLoading} />
-            <VideosSection data={data} loading={loading} />
+            <Cast data={credits?.cast} loading={creditsLoading} mediaType={mediaType} />
+            <Crew data={credits?.crew} loading={creditsLoading} mediaType={mediaType} />
+            <VideosSection data={data} loading={loading} mediaType={mediaType} />
             <Similar mediaType={mediaType} id={id} />
             <Recommendation mediaType={mediaType} id={id} />
+
+            <KnownFor data={credits} loading={creditsLoading} mediaType={mediaType} />
         </div>
     )
 };

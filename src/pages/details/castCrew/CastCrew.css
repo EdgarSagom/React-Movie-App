@@ -19,6 +19,7 @@
 .castSection .listItems .item {
     text-align: center;
     color: white;
+    cursor: pointer;
 }
 .castSection .listItems .item .profileImg {
     width: 125px;
@@ -41,6 +42,7 @@
     font-weight: 600;
 }
 .castSection .listItems .item .character {
+    height: 43px;
     font-size: 14px;
     line-height: 20px;
     opacity: .5;

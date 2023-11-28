@@ -8,9 +8,10 @@ import './DetailsBanner.css';
 import ContentWrapper from '../../../components/contentWrapper/ContentWrapper';
 import useFetch from '../../../hooks/useFetch';
 import Genres from '../../../components/genres/Genres';
-import CircleRating from '../../../components/circleRating/CircleRating';
+import { CircleRating, CircleRatingPeople } from '../../../components/circleRating/CircleRating';
 import Img from '../../../components/lazyLoadImage/Img';
 import PosterFallBack from '../../../assets/no-poster.png';
+import avatar from '../../../assets/avatar.png';
 import PlayBtn from '../PlayBtn';
 import VideoPopup from '../../../components/videoPopup/VideoPopup';
 
@@ -38,7 +39,7 @@ export default function DetailsBanner({ video, crew }) {
         <div className="detailsBanner">
             {!loading ? (
                 <>
-                    {!!data && (
+                    {mediaType === 'movie' && (
                         <React.Fragment>
                             <div className="backdrop-img">
                                 <Img src={url.backdrop + data?.backdrop_path} />
@@ -47,7 +48,220 @@ export default function DetailsBanner({ video, crew }) {
                             <ContentWrapper>
                                 <div className="content">
                                     <div className="left">
-                                        {data.poster_path ? (
+                                        {data?.poster_path ? (
+                                            <Img className='posterImg' src={url.backdrop + data.poster_path} />
+                                        ) : (
+                                            <Img className='posterImg' src={PosterFallBack} />
+                                        )}
+                                    </div>
+
+                                    <div className="right">
+                                        <div className="title">
+                                            {`${data?.title} (${dayjs(data?.release_date).format('YYYY')})`}
+                                        </div>
+                                        <div className="subtitle">
+                                            {data?.tagline}
+                                        </div>
+
+                                        <Genres data={_genres}/>
+
+                                        <div className="row">
+                                            <CircleRating rating={data?.vote_average?.toFixed(1)}/>
+                                            <div className="playBtn" 
+                                                onClick={() => {
+                                                    setShow(true)
+                                                    setVideoId(video.key)
+                                                }}
+                                            >
+                                                <PlayBtn />
+                                                <span className="text">
+                                                    Watch Trailer
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div className="overview">
+                                            <div className="heading">
+                                                Overview
+                                            </div>
+                                            <div className="description">
+                                                {data?.overview}
+                                            </div>
+                                        </div>
+
+                                        <div className="info">
+                                            {data?.status && (
+                                                <div className='infoItem'>
+                                                    <span className='text bold'>
+                                                        Status:{' '}
+                                                    </span>
+                                                    <span className='text'>
+                                                        {data.status}
+                                                    </span>
+                                                </div>
+                                            )}
+                                            {data?.release_date && (
+                                                <div className='infoItem'>
+                                                    <span className='text bold'>
+                                                        Release Date:{' '}
+                                                    </span>
+                                                    <span className='text'>
+                                                        {data.release_date}
+                                                    </span>
+                                                </div>
+                                            )}
+                                            {data?.runtime && (
+                                                <div className='infoItem'>
+                                                    <span className='text bold'>
+                                                        Runtime:{' '}
+                                                    </span>
+                                                    <span className='text'>
+                                                        {toHoursAndMinutes(data.runtime)}
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        <div className='info'>
+                                            {data?.spoken_languages && (
+                                                <div className='infoItem'>
+                                                    <span className='text bold'>
+                                                        Language:{' '}
+                                                    </span>
+                                                    <span className='text'>
+                                                        {data.spoken_languages?.map((d, i) => (
+                                                            <span key={i}>
+                                                                {d.english_name}
+                                                                {data.spoken_languages.length - 1 !== i && ', '}
+                                                            </span>
+                                                        ))}
+                                                    </span>
+                                                </div>
+                                            )}
+                                            {data?.budget && (
+                                                <div className='infoItem'>
+                                                    <span className='text bold'>
+                                                        Budget:{' '}
+                                                    </span>
+                                                    <span className='text'>
+                                                        ${data.budget ? data.budget?.toLocaleString('en') : ' -'}
+                                                    </span>
+                                                </div>
+                                            )}
+                                            {data?.revenue && (
+                                                <div className='infoItem'>
+                                                    <span className='text bold'>
+                                                        Revenue:{' '}
+                                                    </span>
+                                                    <span className='text'>
+                                                        ${data.revenue ? data.revenue?.toLocaleString('en') : ' -'}
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {director?.length > 0 && (
+                                            <div className='info'>
+                                                <span className='text bold'>
+                                                    Director:{' '}
+                                                </span>
+                                                <span className='text'>
+                                                    {director?.map((d, i) => (
+                                                        <span key={i}>
+                                                            {d.name}
+                                                            {director.length - 1 !== i && ', '}
+                                                        </span>
+                                                    ))}
+                                                </span>
+                                            </div>
+                                        )}
+
+                                        {writer?.length > 0 && (
+                                            <div className='info'>
+                                                <span className='text bold'>
+                                                    Writer:{' '}
+                                                </span>
+                                                <span className='text'>
+                                                    {writer?.map((d, i) => (
+                                                        <span key={i}>
+                                                            {d.name}
+                                                            {writer.length - 1 !== i && ', '}
+                                                        </span>
+                                                    ))}
+                                                </span>
+                                            </div>
+                                        )}
+
+                                        {data?.created_by?.length > 0 && (
+                                            <div className='info'>
+                                                <span className='text bold'>
+                                                    Creator:{' '}
+                                                </span>
+                                                <span className='text'>
+                                                    {data?.created_by?.map((d, i) => (
+                                                        <span key={i}>
+                                                            {d.name}
+                                                            {data?.created_by.length - 1 !== i && ', '}
+                                                        </span>
+                                                    ))}
+                                                </span>
+                                            </div>
+                                        )}
+
+                                        {data?.production_companies?.length > 0 && (
+                                            <div className='info'>
+                                                <span className='text bold'>
+                                                    Production Companies:{' '}
+                                                </span>
+                                                <span className='text'>
+                                                    {data?.production_companies?.map((d, i) => (
+                                                        <span key={i}>
+                                                            {d.name}
+                                                            {data?.production_companies.length - 1 !== i && ', '}
+                                                        </span>
+                                                    ))}
+                                                </span>
+                                            </div>
+                                        )}
+
+                                        {data?.production_countries?.length > 0 && (
+                                            <div className='info'>
+                                                <span className='text bold'>
+                                                    Production Countries:{' '}
+                                                </span>
+                                                <span className='text'>
+                                                    {data?.production_countries?.map((d, i) => (
+                                                        <span key={i}>
+                                                            {d.name}
+                                                            {data?.production_countries.length - 1 !== i && ', '}
+                                                        </span>
+                                                    ))}
+                                                </span>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <VideoPopup
+                                    show={show}
+                                    setShow={setShow}
+                                    videoId={videoId}
+                                    setVideoId={setVideoId}
+                                />
+                            </ContentWrapper>
+                        </React.Fragment>
+                    )}
+
+                    {mediaType === 'tv' && (
+                        <React.Fragment>
+                            <div className="backdrop-img">
+                                <Img src={url.backdrop + data?.backdrop_path} />
+                            </div>
+                            <div className="opacity-layer"></div>
+                            <ContentWrapper>
+                                <div className="content">
+                                    <div className="left">
+                                        {data?.poster_path ? (
                                             <Img className='posterImg' src={url.backdrop + data.poster_path} />
                                         ) : (
                                             <Img className='posterImg' src={PosterFallBack} />
@@ -72,16 +286,16 @@ export default function DetailsBanner({ video, crew }) {
 
                                     <div className="right">
                                         <div className="title">
-                                            {`${data.name || data.title} (${dayjs(data?.release_date).format('YYYY')})`}
+                                            {`${data?.name} (${dayjs(data?.last_air_date).format('YYYY')})`}
                                         </div>
                                         <div className="subtitle">
-                                            {data.tagline}
+                                            {data?.tagline}
                                         </div>
 
                                         <Genres data={_genres}/>
 
                                         <div className="row">
-                                            <CircleRating rating={data.vote_average.toFixed(1)}/>
+                                            <CircleRating rating={data?.vote_average?.toFixed(1)}/>
                                             <div className="playBtn" 
                                                 onClick={() => {
                                                     setShow(true)
@@ -100,12 +314,12 @@ export default function DetailsBanner({ video, crew }) {
                                                 Overview
                                             </div>
                                             <div className="description">
-                                                {data.overview}
+                                                {data?.overview}
                                             </div>
                                         </div>
 
                                         <div className="info">
-                                            {data.status && (
+                                            {data?.status && (
                                                 <div className='infoItem'>
                                                     <span className='text bold'>
                                                         Status:{' '}
@@ -115,28 +329,7 @@ export default function DetailsBanner({ video, crew }) {
                                                     </span>
                                                 </div>
                                             )}
-                                            {data.release_date && (
-                                                <div className='infoItem'>
-                                                    <span className='text bold'>
-                                                        Release Date:{' '}
-                                                    </span>
-                                                    <span className='text'>
-                                                        {data.release_date}
-                                                    </span>
-                                                </div>
-                                            )}
-                                            {data.runtime && (
-                                                <div className='infoItem'>
-                                                    <span className='text bold'>
-                                                        Runtime:{' '}
-                                                    </span>
-                                                    <span className='text'>
-                                                        {toHoursAndMinutes(data.runtime)}
-                                                    </span>
-                                                </div>
-                                            )}
-                                            
-                                            {data.number_of_seasons && (
+                                            {data?.number_of_seasons && (
                                                 <div className='infoItem'>
                                                     <span className='text bold'>
                                                         Seasons:{' '}
@@ -146,7 +339,7 @@ export default function DetailsBanner({ video, crew }) {
                                                     </span>
                                                 </div>
                                             )}
-                                            {data.number_of_episodes && (
+                                            {data?.number_of_episodes && (
                                                 <div className='infoItem'>
                                                     <span className='text bold'>
                                                         Episodes:{' '}
@@ -156,7 +349,7 @@ export default function DetailsBanner({ video, crew }) {
                                                     </span>
                                                 </div>
                                             )}
-                                            {data.episode_run_time && (
+                                            {data?.episode_run_time && (
                                                 <div className='infoItem'>
                                                     <span className='text bold'>
                                                         Episode Run Time:{' '}
@@ -169,7 +362,7 @@ export default function DetailsBanner({ video, crew }) {
                                         </div>
 
                                         <div className='info'>
-                                            {data.spoken_languages && (
+                                            {data?.spoken_languages && (
                                                 <div className='infoItem'>
                                                     <span className='text bold'>
                                                         Language:{' '}
@@ -177,35 +370,14 @@ export default function DetailsBanner({ video, crew }) {
                                                     <span className='text'>
                                                         {data.spoken_languages?.map((d, i) => (
                                                             <span key={i}>
-                                                                {d.name}
+                                                                {d.english_name}
                                                                 {data.spoken_languages.length - 1 !== i && ', '}
                                                             </span>
                                                         ))}
                                                     </span>
                                                 </div>
                                             )}
-                                            {data.budget && (
-                                                <div className='infoItem'>
-                                                    <span className='text bold'>
-                                                        Budget:{' '}
-                                                    </span>
-                                                    <span className='text'>
-                                                        ${data.budget ? data.budget.toLocaleString('en') : ' -'}
-                                                    </span>
-                                                </div>
-                                            )}
-                                            {data.revenue && (
-                                                <div className='infoItem'>
-                                                    <span className='text bold'>
-                                                        Revenue:{' '}
-                                                    </span>
-                                                    <span className='text'>
-                                                        ${data.revenue ? data.revenue.toLocaleString('en') : ' -'}
-                                                    </span>
-                                                </div>
-                                            )}
-
-                                            {data.first_air_date && (
+                                            {data?.first_air_date && (
                                                 <div className='infoItem'>
                                                     <span className='text bold'>
                                                         First Air Date:{' '}
@@ -215,7 +387,7 @@ export default function DetailsBanner({ video, crew }) {
                                                     </span>
                                                 </div>
                                             )}
-                                            {data.last_air_date && (
+                                            {data?.last_air_date && (
                                                 <div className='infoItem'>
                                                     <span className='text bold'>
                                                         Last Air Date:{' '}
@@ -315,6 +487,111 @@ export default function DetailsBanner({ video, crew }) {
                                     videoId={videoId}
                                     setVideoId={setVideoId}
                                 />
+                            </ContentWrapper>
+                        </React.Fragment>
+                    )}
+
+                    {mediaType === 'person' && (
+                        <React.Fragment>
+                            <div className="backdrop-img backdrop-img-w">
+                                <Img src={data?.profile_path ? url.backdrop + data?.profile_path : ''} />
+                            </div>
+                            <div className="opacity-layer"></div>
+                            <ContentWrapper>
+                                <div className="content">
+                                    <div className="left">
+                                        {data?.profile_path ? (
+                                            <Img className='posterImg' src={url.backdrop + data.profile_path} />
+                                        ) : (
+                                            <Img className='posterImg' src={avatar} />
+                                        )}
+                                    </div>
+
+                                    <div className="right">
+                                        <div className="title">
+                                            {`${data?.name} (${dayjs(data?.birthday).format('YYYY')}${data?.deathday ? ` - ${dayjs(data?.deathday).format('YYYY')}` : ''})`}
+                                        </div>
+                                        <div className="subtitle">
+                                            {data?.known_for_department}
+                                        </div>
+                                        <div className="row">
+                                            <CircleRatingPeople rating={data?.popularity.toFixed(0) }/>
+                                        </div>
+
+                                        <div className="overview">
+                                            <div className="heading">
+                                                Biography
+                                            </div>
+                                            <div className="description">
+                                                {data?.biography}
+                                            </div>
+                                        </div>
+
+                                        <div className="info">
+                                            {data?.birthday && (
+                                                <div className='infoItem'>
+                                                    <span className='text bold'>
+                                                        Birthday:{' '}
+                                                    </span>
+                                                    <span className='text'>
+                                                        {data.birthday}
+                                                    </span>
+                                                </div>
+                                            )}
+                                            {data?.place_of_birth && (
+                                                <div className='infoItem'>
+                                                    <span className='text bold'>
+                                                        Place of Birth:{' '}
+                                                    </span>
+                                                    <span className='text'>
+                                                        {data.place_of_birth}
+                                                    </span>
+                                                </div>
+                                            )}
+                                            {data?.deathday && (
+                                                <div className='infoItem'>
+                                                    <span className='text bold'>
+                                                        Deathday:{' '}
+                                                    </span>
+                                                    <span className='text'>
+                                                        {data.deathday}
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {data?.homepage && (
+                                            <div className="info">
+                                                <div className='infoItem'>
+                                                    <span className='text bold'>
+                                                        Homepage:{' '}
+                                                    </span>
+                                                    <span className='text'>
+                                                        {data.homepage}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        <div className='info'>
+                                            {data?.also_known_as && (
+                                                <div className='infoItem'>
+                                                    <span className='text bold'>
+                                                        Also known as:{' '}
+                                                    </span>
+                                                    <span className='text'>
+                                                        {data.also_known_as?.map((d, i) => (
+                                                            <span key={i}>
+                                                                {d}
+                                                                {data.also_known_as.length - 1 !== i && ', '}
+                                                            </span>
+                                                        ))}
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
                             </ContentWrapper>
                         </React.Fragment>
                     )}

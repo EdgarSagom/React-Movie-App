@@ -7,7 +7,7 @@ import PlayBtn from '../PlayBtn';
 import VideoPopup from '../../../components/videoPopup/VideoPopup';
 import Img from '../../../components/lazyLoadImage/Img';
 
-export default function VideosSection({ data, loading }) {
+export default function VideosSection({ data, loading, mediaType }) {
     const [show, setShow] = useState(false);
     const [videoId, setVideoId] = useState(null);
 
@@ -24,28 +24,60 @@ export default function VideosSection({ data, loading }) {
     return (
         <div className='videosSection'>
             <ContentWrapper>
-                <div className="sectionHeading">Official Videos</div>
                 {!loading ? (
-                    <div className="videos">
-                        {data?.results?.map((video) => (
-                            <div
-                                key={video.id}
-                                className="videoItem"
-                                onClick={() => {
-                                    setVideoId(video.key);
-                                    setShow(true);
-                                }}
-                            >
-                                <div className="videoThumbnail">
-                                    <Img src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`} />
-                                    <PlayBtn />
+                    <>
+                        {mediaType === 'movie' && (
+                            <>
+                                <div className="sectionHeading">Official Videos</div>
+                                <div className="videos">
+                                    {data?.results?.map((video) => (
+                                        <div
+                                            key={video.id}
+                                            className="videoItem"
+                                            onClick={() => {
+                                                setVideoId(video.key);
+                                                setShow(true);
+                                            }}
+                                        >
+                                            <div className="videoThumbnail">
+                                                <Img src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`} />
+                                                <PlayBtn />
+                                            </div>
+                                            <div className="videoTitle">
+                                                {video.name}
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                                <div className="videoTitle">
-                                    {video.name}
+                            </>
+                        )}
+
+                        {mediaType === 'tv' && (
+                            <>
+                                <div className="sectionHeading">Official Videos</div>
+                                <div className="videos">
+                                    {data?.results?.map((video) => (
+                                        <div
+                                            key={video.id}
+                                            className="videoItem"
+                                            onClick={() => {
+                                                setVideoId(video.key);
+                                                setShow(true);
+                                            }}
+                                        >
+                                            <div className="videoThumbnail">
+                                                <Img src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`} />
+                                                <PlayBtn />
+                                            </div>
+                                            <div className="videoTitle">
+                                                {video.name}
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                            </div>
-                        ))}
-                    </div>
+                            </>
+                        )}
+                    </>
                 ) : (
                     <div className="videoSkeleton">
                         {loadingSkeleton()}

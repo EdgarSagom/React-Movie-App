@@ -7,6 +7,7 @@ import './SearchResult.css';
 import { getDataFromApi } from "../../hooks/dataApi";
 import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 import MovieCard from "../../components/movieCard/MovieCard";
+import PeopleCard from '../../components/peopleCard/PeopleCard';
 import Spinner from "../../components/spinner/Spinner";
 
 export default function SearchResult() {
@@ -62,10 +63,15 @@ export default function SearchResult() {
                                 loader={<Spinner />}
                             >
                                 {data?.results.map((item, index) => {
-                                    if(item.media_type === 'person') return;
-                                    return (
-                                        <MovieCard key={index} data={item} fromSearch={true} />
-                                    )
+                                    if(item.media_type === 'person') {
+                                        return (
+                                            <PeopleCard key={index} data={item} fromSearch={true} />
+                                        )
+                                    } else {
+                                        return (
+                                            <MovieCard key={index} data={item} fromSearch={true} />
+                                        )
+                                    }
                                 })}
                             </InfiniteScroll>
                         </>

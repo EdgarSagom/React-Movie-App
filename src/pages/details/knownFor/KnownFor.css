@@ -1,0 +1,13 @@
+.knownForSection {
+    position: relative;
+    margin-bottom: 50px;
+    color: white;
+}
+.knownForSection .sectionHeading {
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+.knownForSection .titleHeading {
+    font-size: 20px;
+    margin-bottom: 10px;
+}

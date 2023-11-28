@@ -9,7 +9,7 @@
     height: 100%;
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     opacity: .1;
     overflow: hidden;
 }
@@ -162,7 +162,6 @@
     flex-flow: wrap;
 }
 .detailsBanner .content .info .text {
-    /* margin-right: 7px; */
     opacity: .5;
     line-height: 24px;
     text-align: center;
@@ -214,6 +213,9 @@
         padding-top: 120px;
         min-height: 700px;
     }
+    .detailsBanner .backdrop-img-w {
+        width: 80%;
+    }
 
     .detailsBanner .content {
         gap: 50px;
@@ -222,10 +224,6 @@
     .detailsBanner .content .left .posterImg {
         max-width: 350px;
     }
-    /* .detailsBanner .content .left .networksLogo {
-        position: relative;
-        justify-content: center;
-    } */
     .detailsBanner .content .right .title {
         font-size: 34px;
         line-height: 44px;

@@ -105,7 +105,14 @@
 }
 .carousel .carouselItems .item .textBlock .title {
     font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
     margin-bottom: 10px;
+}
+.carousel .carouselItems .item .textBlock .characterJob {
+    font-size: 14px;
+    line-height: 20px;
+    opacity: .9;
 }
 .carousel .carouselItems .item .textBlock .date {
     font-size: 12px;
@@ -167,7 +174,12 @@
         justify-content: flex-end;
     }
     .carousel .carouselItems .item .textBlock .title {
-        font-size: 20px;
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .carousel .carouselItems .item .textBlock .characterJob {
+        font-size: 16px;
+        line-height: 24px;
     }
 
     .loadingSkeleton {

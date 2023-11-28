@@ -66,8 +66,8 @@ export default function Header() {
             navigate('/explore/movie');
         } else if (type === 'tv') {
             navigate('/explore/tv');
-        } else {
-            navigate('/explore/people');
+        } else if (type === 'person') {
+            navigate('/explorePerson');
         }
         setMobileMenu(false);
     };
@@ -82,7 +82,7 @@ export default function Header() {
                 <ul className="menuItems">
                     <li className="item" onClick={() => navigationHandler('movie')}>Movies</li>
                     <li className="item" onClick={() => navigationHandler('tv')}>Tv Series</li>
-                    <li className='item' onClick={() => navigationHandler('people')}>People</li>
+                    <li className='item' onClick={() => navigationHandler('person')}>Person</li>
                     <li className="item">
                         <HiOutlineSearch onClick={openSearch}/>
                     </li>

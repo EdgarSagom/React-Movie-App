@@ -8,11 +8,28 @@ export default function Similar({ mediaType, id }) {
     const title = mediaType === 'tv' ? 'Similar TV Series' : 'Similar Movies';
 
     return (
-        <Carousel
-            title={title}
-            data={data?.results}
-            loading={loading}
-            endpoint={mediaType}
-        />
+        <>
+            {mediaType === 'movie' && (
+                <>
+                    <Carousel
+                        title={title}
+                        data={data?.results}
+                        loading={loading}
+                        endpoint={mediaType}
+                    />
+                </>
+            )}
+
+            {mediaType === 'tv' && (
+                <>
+                    <Carousel
+                        title={title}
+                        data={data?.results}
+                        loading={loading}
+                        endpoint={mediaType}
+                    />
+                </>
+            )}
+        </>
     );
 };
