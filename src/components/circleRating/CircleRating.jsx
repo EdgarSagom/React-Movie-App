@@ -24,11 +24,11 @@ export function CircleRatingPeople({ rating }) {
         <div className="circleRating">
             <CircularProgressbar
                 value={rating}
-                maxValue={100}
-                text={rating + '%'}
+                maxValue={150}
+                text={rating}
                 styles={buildStyles({
                     pathColor:
-                        rating < 50 ? "red" : rating < 70 ? "orange" : "green",
+                        rating < 30 ? "red" : rating <70 ? "orange" : rating<110 ? 'yellow' : "green",
                 })}
             />
         </div>

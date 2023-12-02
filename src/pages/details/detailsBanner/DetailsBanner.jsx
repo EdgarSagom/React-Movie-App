@@ -45,6 +45,7 @@ export default function DetailsBanner({ video, crew }) {
                                 <Img src={url.backdrop + data?.backdrop_path} />
                             </div>
                             <div className="opacity-layer"></div>
+                            <div className="opacity-layer-2"></div>
                             <ContentWrapper>
                                 <div className="content">
                                     <div className="left">
@@ -258,6 +259,7 @@ export default function DetailsBanner({ video, crew }) {
                                 <Img src={url.backdrop + data?.backdrop_path} />
                             </div>
                             <div className="opacity-layer"></div>
+                            <div className="opacity-layer-2"></div>
                             <ContentWrapper>
                                 <div className="content">
                                     <div className="left">
@@ -496,6 +498,7 @@ export default function DetailsBanner({ video, crew }) {
                             <div className="backdrop-img backdrop-img-w">
                                 <Img src={data?.profile_path ? url.backdrop + data?.profile_path : ''} />
                             </div>
+                            <div className="opacity-layer-2"></div>
                             <div className="opacity-layer"></div>
                             <ContentWrapper>
                                 <div className="content">
@@ -509,7 +512,7 @@ export default function DetailsBanner({ video, crew }) {
 
                                     <div className="right">
                                         <div className="title">
-                                            {`${data?.name} (${dayjs(data?.birthday).format('YYYY')}${data?.deathday ? ` - ${dayjs(data?.deathday).format('YYYY')}` : ''})`}
+                                            {`${data?.name} (${data?.birthday ? dayjs(data?.birthday).format('YYYY') : ''}${data?.deathday ? ` - ${dayjs(data?.deathday).format('YYYY')}` : ''})`}
                                         </div>
                                         <div className="subtitle">
                                             {data?.known_for_department}

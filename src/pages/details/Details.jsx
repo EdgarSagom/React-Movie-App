@@ -11,6 +11,7 @@ import VideosSection from './videosSection/VideosSection';
 import Similar from './carousels/Similar';
 import Recommendation from './carousels/Recommendation';
 import KnownFor from './knownFor/KnownFor';
+import ImagesPerson from './imagesPerson/imagesPerson';
 
 export default function Details() {
     const { mediaType, id} = useParams();
@@ -26,7 +27,8 @@ export default function Details() {
             <Similar mediaType={mediaType} id={id} />
             <Recommendation mediaType={mediaType} id={id} />
 
+            <ImagesPerson id={id} loading={loading} mediaType={mediaType} />
             <KnownFor data={credits} loading={creditsLoading} mediaType={mediaType} />
         </div>
-    )
+    );
 };

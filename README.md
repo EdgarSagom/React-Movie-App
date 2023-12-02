@@ -25,3 +25,5 @@
     npm install axios
 
     npm i react-select
+
+    npm i react-viewerjs

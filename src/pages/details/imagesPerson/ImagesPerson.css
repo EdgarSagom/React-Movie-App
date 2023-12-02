@@ -1,0 +1,74 @@
+.imagesSection {
+    margin-bottom: 50px;
+}
+.imagesSection .contentWrapper {
+    position: relative;
+}
+.imagesSection .contentWrapper .sectionHeading {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: white;
+}
+.imagesSection .contentWrapper .arrow {
+    font-size: 40px;
+    color: var(--yellow);
+    position: absolute;
+    cursor: pointer;
+    opacity: .5;
+    z-index: 1;
+    top: 55%;
+    display: none;
+}
+.imagesSection .contentWrapper .arrow:hover {
+    opacity: .8;
+}
+.imagesSection .contentWrapper .carouselLeftNav {
+    left: 50px;
+}
+.imagesSection .contentWrapper .carouselRightNav {
+    right: 50px;
+}
+.imagesSection .contentWrapper .carouselImageItems {
+    display: flex;
+    gap: 10px;
+    overflow-y: hidden;
+    padding: 0 20px;
+}
+.imagesSection .carouselImageItems .item {
+    width: 125px;
+    flex-shrink: 0;
+}
+.imagesSection .carouselImageItems .item .posterBlock {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1.5;
+    background-size: cover;
+}
+.imagesSection .carouselImageItems .item .posterBlock .lazy-load-image-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.imagesSection .carouselImageItems .item .posterBlock .lazy-load-image-background img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media(min-width: 768px) {
+    .imagesSection .contentWrapper .arrow {
+        display: block;
+    }
+    .imagesSection .contentWrapper .carouselImageItems {
+        gap: 20px;
+    }
+    .imagesSection .contentWrapper .carouselImageItems .item {
+        width: calc(20% - 15px);
+    }
+}

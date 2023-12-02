@@ -53,5 +53,5 @@ export default function KnownFor({ data, loading, mediaType }) {
                 )}
             </ContentWrapper>
         </div>
-    )
-}
+    );
+};

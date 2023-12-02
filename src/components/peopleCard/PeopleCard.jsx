@@ -6,7 +6,7 @@ import Img from "../lazyLoadImage/Img";
 import { CircleRatingPeople } from "../circleRating/CircleRating";
 import avatar from '../../assets/avatar.png'
 
-export default function PeopleCard({ data, fromSearch, mediaType }) {
+export default function PeopleCard({ data, mediaType }) {
     const { url } = useSelector((state) => state.home);
     const navigate = useNavigate();
 
@@ -16,21 +16,7 @@ export default function PeopleCard({ data, fromSearch, mediaType }) {
         <div className="peopleCard" onClick={() => navigate(`/${data.media_type || mediaType}/${data.id}`)}>
             <div className="posterBlock">
                 <Img src={profileUrl}/>
-                {fromSearch && (
-                    <>
-                        <CircleRatingPeople rating={data.popularity.toFixed(0)} />
-                    </>
-                )}
-                {mediaType && (
-                    <>
-                        <CircleRatingPeople rating={data.popularity.toFixed(0)} />
-                    </>
-                )}
-                {data.media_type === 'person' && (
-                    <>
-                        <CircleRatingPeople rating={data.popularity.toFixed(0)} />
-                    </>
-                )}
+                <CircleRatingPeople rating={data?.popularity.toFixed(0)} />
             </div>
             <div className="textBlock">
                 <span className="title">{data.name}</span>
