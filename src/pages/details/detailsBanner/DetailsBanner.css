@@ -182,6 +182,12 @@
     font-weight: 600;
     opacity: 1;
 }
+.detailsBanner .content .containerLogo .nameCompanies{
+    font-size: 10px;
+}
+.detailsBanner .content .containerLogo .logo {
+    width: 12rem;
+}
 
 .detailsBannerSkeleton {
     display: flex;
@@ -255,6 +261,13 @@
     }
     .detailsBanner .content .info .text {
         margin: 0 10px 0 0;
+    }
+    .detailsBanner .content .containerLogo {
+        display: flex;
+        align-items: center;
+    }
+    .detailsBanner .content .containerLogo .nameCompanies {
+        margin-right: 10px;
     }
 
     .detailsBannerSkeleton {

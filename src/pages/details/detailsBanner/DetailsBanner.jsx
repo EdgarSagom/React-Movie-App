@@ -217,8 +217,12 @@ export default function DetailsBanner({ video, crew }) {
                                                 <span className='text'>
                                                     {data?.production_companies?.map((d, i) => (
                                                         <span key={i}>
-                                                            {d.name}
-                                                            {data?.production_companies.length - 1 !== i && ', '}
+                                                            <div className='containerLogo'>
+                                                                <div className='nameCompanies'>
+                                                                    {d.name}
+                                                                </div>
+                                                                <Img className='logo' src={url.backdrop + d.logo_path}/>
+                                                            </div>
                                                         </span>
                                                     ))}
                                                 </span>
@@ -457,8 +461,12 @@ export default function DetailsBanner({ video, crew }) {
                                                 <span className='text'>
                                                     {data?.production_companies?.map((d, i) => (
                                                         <span key={i}>
-                                                            {d.name}
-                                                            {data?.production_companies.length - 1 !== i && ', '}
+                                                            <div className='containerLogo'>
+                                                                <div className='nameCompanies'>
+                                                                    {d.name}
+                                                                </div>
+                                                                <Img className='logo' src={url.backdrop + d.logo_path}/>
+                                                            </div>
                                                         </span>
                                                     ))}
                                                 </span>
