@@ -82,7 +82,7 @@
     color: white;
 }
 .detailsBanner .content .right .title {
-    font-style: 28px;
+    font-size: 28px;
     line-height: 40px;
 }
 .detailsBanner .content .right .subtitle {
@@ -152,6 +152,7 @@
 }
 
 .detailsBanner .content .overview {
+    padding: 10px;
     margin-bottom: 25px;
 }
 .detailsBanner .content .overview .heading {
@@ -175,7 +176,6 @@
 .detailsBanner .content .info .text {
     opacity: .5;
     line-height: 24px;
-    text-align: center;
     margin: auto;
 }
 .detailsBanner .content .info .bold {
@@ -187,6 +187,49 @@
 }
 .detailsBanner .content .containerLogo .logo {
     width: 12rem;
+}
+
+.detailsBanner .infoSeason {
+    position: relative;
+    margin: 50px 0;
+    color: white;
+}
+.detailsBanner .infoSeason .lastSeason {
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+.detailsBanner .infoSeason .content {
+    border: 5px solid var(--red);
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+}
+.detailsBanner .infoSeason .content .row {
+    justify-content: center;
+}
+.detailsBanner .content .left .posterImgSeason {
+    width: 80%;
+    display: block;
+    border-radius: 12px;
+    margin: 20px auto;
+    box-shadow: 5px 5px 10px var(--yellow),
+    5px 5px 50px var(--red);
+}
+
+.detailsBanner .content .episodeType {
+    margin: 25px 0;
+}
+.detailsBanner .content .episodeType .heading {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.detailsBanner .infoSeason .allSeason {
+    font-size: 24px;
+    cursor: pointer;
+}
+.detailsBanner .infoSeason .allSeason:hover {
+    color: var(--red);
 }
 
 .detailsBannerSkeleton {
@@ -268,6 +311,13 @@
     }
     .detailsBanner .content .containerLogo .nameCompanies {
         margin-right: 10px;
+    }
+
+    .detailsBanner .infoSeason .content {
+        text-align: start;
+    }
+    .detailsBanner .infoSeason .content .row {
+        justify-content: start;
     }
 
     .detailsBannerSkeleton {

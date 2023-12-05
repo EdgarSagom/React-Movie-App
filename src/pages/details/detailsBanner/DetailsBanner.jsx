@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 import './DetailsBanner.css';
@@ -19,10 +20,10 @@ export default function DetailsBanner({ video, crew }) {
     const [show, setShow] = useState(false);
     const [videoId, setVideoId] = useState(null);
 
-    const { mediaType, id} = useParams();
-    const {data, loading} = useFetch(`/${mediaType}/${id}`);
+    const { mediaType, id } = useParams();
+    const { data, loading } = useFetch(`/${mediaType}/${id}`);
 
-    const {url} = useSelector((state) => state.home);
+    const { url } = useSelector((state) => state.home);
 
     const _genres = data?.genres?.map((g) => g.id);
 
@@ -34,6 +35,10 @@ export default function DetailsBanner({ video, crew }) {
         const minutes = totalMinutes % 60;
         return `${hours}h${minutes > 0 ? ` ${minutes}m` : ''}`;
     };
+
+    const lastSeason = data?.seasons[data.seasons.length-1];
+
+    const navigate = useNavigate();
 
     return (
         <div className="detailsBanner">
@@ -488,6 +493,63 @@ export default function DetailsBanner({ video, crew }) {
                                                 </span>
                                             </div>
                                         )}
+                                    </div>
+                                </div>
+
+                                <div className='infoSeason'>
+                                    <div className='lastSeason'>
+                                        Last Season
+                                    </div>
+                                    <div className='content'>
+                                        <div className='left'>
+                                            <Img className='posterImg posterImgSeason' src={lastSeason?.poster_path !== null ? url.backdrop + lastSeason?.poster_path : PosterFallBack} />
+                                        </div>
+                                        <div className='right'>
+                                            <div className='title'>
+                                                {`Season ${data?.next_episode_to_air !== null ? data?.next_episode_to_air.season_number : data?.last_episode_to_air.season_number}`}
+                                            </div>
+                                            <div className="row">
+                                                <CircleRating rating={lastSeason?.vote_average?.toFixed(1)}/>
+                                                <span className='subtitle'>
+                                                    {data?.next_episode_to_air !== null ? dayjs(data?.next_episode_to_air.air_date).format('YYYY') : dayjs(data?.last_episode_to_air.air_date).format('YYYY')}
+                                                </span>
+                                                <span className='subtitle'>
+                                                    {`${lastSeason?.episode_count} Episodes`}
+                                                </span>
+                                            </div>
+                                            <div className="overview">
+                                                <div className="heading">
+                                                    Overview
+                                                </div>
+                                                <div className="description">
+                                                    {lastSeason?.overview}
+                                                </div>
+                                            </div>
+                                            <div className='info'>
+                                                <span className='text bold'>
+                                                    Last Episode:
+                                                </span>
+                                                <span className='text'>
+                                                    {data?.next_episode_to_air !== null ? data?.next_episode_to_air.name : data?.last_episode_to_air.name}
+                                                </span>
+                                                <span className='text'>
+                                                    {data?.next_episode_to_air !== null ? 
+                                                            `(${data?.next_episode_to_air.season_number} X ${data?.next_episode_to_air.episode_number}, ${data?.next_episode_to_air.air_date})`
+                                                        :
+                                                            `(${data?.last_episode_to_air.season_number} X ${data?.last_episode_to_air.episode_number}, ${data?.last_episode_to_air.air_date})`
+                                                    }
+                                                </span>
+                                            </div>
+                                            <div className='episodeType'>
+                                                <span className='heading'>
+                                                    {data?.next_episode_to_air !== null ? 
+                                                            `${data?.next_episode_to_air.episode_type.substring(0,1).toUpperCase() + data?.next_episode_to_air.episode_type.substring(1).toLowerCase()} Season`
+                                                        :
+                                                            `${data?.last_episode_to_air.episode_type.substring(0,1).toUpperCase() + data?.last_episode_to_air.episode_type.substring(1).toLowerCase()} Season`
+                                                    }
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
