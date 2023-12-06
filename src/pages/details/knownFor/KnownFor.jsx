@@ -19,34 +19,30 @@ export default function KnownFor({ data, loading, mediaType }) {
             <ContentWrapper>
                 {!loading && (
                     <>
-                        {mediaType === 'person' && (
+                        <div className="sectionHeading">Know for</div>
+                        {cast && (
                             <>
-                                <div className="sectionHeading">Know for</div>
-                                {cast && (
-                                    <>
-                                        <div className="titleHeading">Acting</div>
-                                        <div>
-                                            <Carousel
-                                                data={cast}
-                                                loading={loading}
-                                                endpoint={type}
-                                            />
-                                        </div>
-                                    </>
-                                )}
+                                <div className="titleHeading">Acting</div>
+                                <div>
+                                    <Carousel
+                                        data={cast}
+                                        loading={loading}
+                                        endpoint={type}
+                                    />
+                                </div>
+                            </>
+                        )}
 
-                                {crew && (
-                                    <>
-                                        <div className="titleHeading">Production</div>
-                                        <div>
-                                            <Carousel
-                                                data={crew}
-                                                loading={loading}
-                                                endpoint={type}
-                                            />
-                                        </div>
-                                    </>
-                                )}
+                        {crew && (
+                            <>
+                                <div className="titleHeading">Production</div>
+                                <div>
+                                    <Carousel
+                                        data={crew}
+                                        loading={loading}
+                                        endpoint={type}
+                                    />
+                                </div>
                             </>
                         )}
                     </>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 import './DetailsBanner.css';
@@ -14,7 +15,7 @@ import PosterFallBack from '../../../assets/no-poster.png';
 import PlayBtn from '../PlayBtn';
 import VideoPopup from '../../../components/videoPopup/VideoPopup';
 
-export default function DetailsBanner({ video, crew }) {
+export default function DetailsBannerTv({ video, crew }) {
     const [show, setShow] = useState(false);
     const [videoId, setVideoId] = useState(null);
 
@@ -34,6 +35,8 @@ export default function DetailsBanner({ video, crew }) {
         return `${hours}h${minutes > 0 ? ` ${minutes}m` : ''}`;
     };
 
+    const lastSeason = data?.seasons[data.seasons.length-1];
+
     return (
         <div className="detailsBanner">
             {!loading ? (
@@ -51,11 +54,27 @@ export default function DetailsBanner({ video, crew }) {
                                 ) : (
                                     <Img className='posterImg' src={PosterFallBack} />
                                 )}
+
+                                {data?.networks?.length > 0 && (
+                                    <div className='networks'>
+                                        <span className='text'>
+                                            Networks:{' '}
+                                        </span>
+                                        <span className='networksLogos'>
+                                            {data?.networks?.map((d, i) => (
+                                                <span key={i}>
+                                                    <Img className='logo' src={url.backdrop + d.logo_path}/>
+                                                    {data?.networks.length - 1 !== i && ' '}
+                                                </span>
+                                            ))}
+                                        </span>
+                                    </div>
+                                )}
                             </div>
 
                             <div className="right">
                                 <div className="title">
-                                    {`${data?.title} (${dayjs(data?.release_date).format('YYYY')})`}
+                                    {`${data?.name} (${dayjs(data?.last_air_date).format('YYYY')})`}
                                 </div>
                                 <div className="subtitle">
                                     {data?.tagline}
@@ -98,23 +117,33 @@ export default function DetailsBanner({ video, crew }) {
                                             </span>
                                         </div>
                                     )}
-                                    {data?.release_date && (
+                                    {data?.number_of_seasons && (
                                         <div className='infoItem'>
                                             <span className='text bold'>
-                                                Release Date:{' '}
+                                                Seasons:{' '}
                                             </span>
                                             <span className='text'>
-                                                {data.release_date}
+                                                {data.number_of_seasons}
                                             </span>
                                         </div>
                                     )}
-                                    {data?.runtime && (
+                                    {data?.number_of_episodes && (
                                         <div className='infoItem'>
                                             <span className='text bold'>
-                                                Runtime:{' '}
+                                                Episodes:{' '}
                                             </span>
                                             <span className='text'>
-                                                {toHoursAndMinutes(data.runtime)}
+                                                {data.number_of_episodes}
+                                            </span>
+                                        </div>
+                                    )}
+                                    {data?.episode_run_time && (
+                                        <div className='infoItem'>
+                                            <span className='text bold'>
+                                                Episode Run Time:{' '}
+                                            </span>
+                                            <span className='text'>
+                                                {toHoursAndMinutes(data.episode_run_time)}
                                             </span>
                                         </div>
                                     )}
@@ -136,23 +165,23 @@ export default function DetailsBanner({ video, crew }) {
                                             </span>
                                         </div>
                                     )}
-                                    {data?.budget && (
+                                    {data?.first_air_date && (
                                         <div className='infoItem'>
                                             <span className='text bold'>
-                                                Budget:{' '}
+                                                First Air Date:{' '}
                                             </span>
                                             <span className='text'>
-                                                ${data.budget ? data.budget?.toLocaleString('en') : ' -'}
+                                                {data.first_air_date}
                                             </span>
                                         </div>
                                     )}
-                                    {data?.revenue && (
+                                    {data?.last_air_date && (
                                         <div className='infoItem'>
                                             <span className='text bold'>
-                                                Revenue:{' '}
+                                                Last Air Date:{' '}
                                             </span>
                                             <span className='text'>
-                                                ${data.revenue ? data.revenue?.toLocaleString('en') : ' -'}
+                                                {data.last_air_date}
                                             </span>
                                         </div>
                                     )}
@@ -241,6 +270,63 @@ export default function DetailsBanner({ video, crew }) {
                                         </span>
                                     </div>
                                 )}
+                            </div>
+                        </div>
+
+                        <div className='infoSeason'>
+                            <div className='lastSeason'>
+                                Last Season
+                            </div>
+                            <div className='content'>
+                                <div className='left'>
+                                    <Img className='posterImg posterImgSeason' src={lastSeason?.poster_path !== null ? url.backdrop + lastSeason?.poster_path : PosterFallBack} />
+                                </div>
+                                <div className='right'>
+                                    <div className='title'>
+                                        {`Season ${data?.next_episode_to_air !== null ? data?.next_episode_to_air.season_number : data?.last_episode_to_air.season_number}`}
+                                    </div>
+                                    <div className="row">
+                                        <CircleRating rating={lastSeason?.vote_average?.toFixed(1)}/>
+                                        <span className='subtitle'>
+                                            {data?.next_episode_to_air !== null ? dayjs(data?.next_episode_to_air.air_date).format('YYYY') : dayjs(data?.last_episode_to_air.air_date).format('YYYY')}
+                                        </span>
+                                        <span className='subtitle'>
+                                            {`${lastSeason?.episode_count} Episodes`}
+                                        </span>
+                                    </div>
+                                    <div className="overview">
+                                        <div className="heading">
+                                            Overview
+                                        </div>
+                                        <div className="description">
+                                            {lastSeason?.overview}
+                                        </div>
+                                    </div>
+                                    <div className='info'>
+                                        <span className='text bold'>
+                                            Last Episode:
+                                        </span>
+                                        <span className='text'>
+                                            {data?.next_episode_to_air !== null ? data?.next_episode_to_air.name : data?.last_episode_to_air.name}
+                                        </span>
+                                        <span className='text'>
+                                            {data?.next_episode_to_air !== null ? 
+                                                    `(${data?.next_episode_to_air.season_number} X ${data?.next_episode_to_air.episode_number}, ${data?.next_episode_to_air.air_date})`
+                                                :
+                                                    `(${data?.last_episode_to_air.season_number} X ${data?.last_episode_to_air.episode_number}, ${data?.last_episode_to_air.air_date})`
+                                            }
+                                        </span>
+                                    </div>
+                                    <div className='episodeType'>
+                                        <span className='heading'>
+                                            {data?.next_episode_to_air !== null ? 
+                                                    `${data?.next_episode_to_air.episode_type.substring(0,1).toUpperCase() + data?.next_episode_to_air.episode_type.substring(1).toLowerCase()} Season`
+                                                :
+                                                    `${data?.last_episode_to_air.episode_type.substring(0,1).toUpperCase() + data?.last_episode_to_air.episode_type.substring(1).toLowerCase()} Season`
+                                            }
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

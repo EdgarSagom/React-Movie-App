@@ -5,13 +5,16 @@ import './Details.css';
 
 import useFetch from '../../hooks/useFetch';
 import DetailsBanner from './detailsBanner/DetailsBanner';
+import DetailsBannerTv from './detailsBanner/DetailsBannerTv';
 import Cast from './castCrew/Cast';
 import Crew from './castCrew/Crew';
 import VideosSection from './videosSection/VideosSection';
 import Similar from './carousels/Similar';
 import Recommendation from './carousels/Recommendation';
-import KnownFor from './knownFor/KnownFor';
+
+import DetailsBannerPerson from './detailsBanner/DetailsBannerPerson';
 import ImagesPerson from './imagesPerson/imagesPerson';
+import KnownFor from './knownFor/KnownFor';
 
 export default function Details() {
     const { mediaType, id} = useParams();
@@ -20,15 +23,36 @@ export default function Details() {
 
     return (
         <div>
-            <DetailsBanner video={data?.results?.[0]} crew={credits?.crew} />
-            <Cast data={credits?.cast} loading={creditsLoading} mediaType={mediaType} />
-            <Crew data={credits?.crew} loading={creditsLoading} mediaType={mediaType} />
-            <VideosSection data={data} loading={loading} mediaType={mediaType} />
-            <Similar mediaType={mediaType} id={id} />
-            <Recommendation mediaType={mediaType} id={id} />
+            {mediaType === 'movie' && (
+                <>
+                    <DetailsBanner video={data?.results?.[0]} crew={credits?.crew} />
+                    <Cast data={credits?.cast} loading={creditsLoading} mediaType={mediaType} />
+                    <Crew data={credits?.crew} loading={creditsLoading} mediaType={mediaType} />
+                    <VideosSection data={data} loading={loading} mediaType={mediaType} />
+                    <Similar mediaType={mediaType} id={id} />
+                    <Recommendation mediaType={mediaType} id={id} />
+                </>
+            )}
 
-            <ImagesPerson id={id} loading={loading} mediaType={mediaType} />
-            <KnownFor data={credits} loading={creditsLoading} mediaType={mediaType} />
+            {mediaType === 'tv' && (
+                <>
+                    <DetailsBannerTv video={data?.results?.[0]} crew={credits?.crew} />
+                    <Cast data={credits?.cast} loading={creditsLoading} mediaType={mediaType} />
+                    <Crew data={credits?.crew} loading={creditsLoading} mediaType={mediaType} />
+                    <VideosSection data={data} loading={loading} mediaType={mediaType} />
+                    <Similar mediaType={mediaType} id={id} />
+                    <Recommendation mediaType={mediaType} id={id} />
+                </>
+            )}
+
+            {mediaType === 'person' && (
+                <>
+                    <DetailsBannerPerson />
+                    <ImagesPerson id={id} loading={loading} mediaType={mediaType} />
+                    <KnownFor data={credits} loading={creditsLoading} mediaType={mediaType} />
+                </>
+            )}
+
         </div>
     );
 };

@@ -27,49 +27,23 @@ export default function Crew({ data, loading, mediaType }) {
             <ContentWrapper>
                 {!loading ? (
                     <>
-                        {mediaType === 'movie' && (
-                            <>
-                                <div className="sectionHeading">Crew</div>
-                                <div className="listItems">
-                                    {data?.map((item) => {
-                                        let imgUrl = item.profile_path ? url.profile + item.profile_path : avatar;
-                                        return (
-                                            <div key={item.id} className="item" onClick={() => navigate(`/person/${item.id}`)}>
-                                                <div className="profileImg">
-                                                    <Img src={imgUrl} />
-                                                </div>
-                                                <div className="name">{item.name}</div>
-                                                <div className="character">
-                                                    {item.job}
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </>
-                        )}
-
-                        {mediaType === 'tv' && (
-                            <>
-                                <div className="sectionHeading">Crew</div>
-                                <div className="listItems">
-                                    {data?.map((item) => {
-                                        let imgUrl = item.profile_path ? url.profile + item.profile_path : avatar;
-                                        return (
-                                            <div key={item.id} className="item" onClick={() => navigate(`/person/${item.id}`)}>
-                                                <div className="profileImg">
-                                                    <Img src={imgUrl} />
-                                                </div>
-                                                <div className="name">{item.name}</div>
-                                                <div className="character">
-                                                    {item.job}
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </>
-                        )}
+                        <div className="sectionHeading">Crew</div>
+                        <div className="listItems">
+                            {data?.map((item) => {
+                                let imgUrl = item.profile_path ? url.profile + item.profile_path : avatar;
+                                return (
+                                    <div key={item.id} className="item" onClick={() => navigate(`/person/${item.id}`)}>
+                                        <div className="profileImg">
+                                            <Img src={imgUrl} />
+                                        </div>
+                                        <div className="name">{item.name}</div>
+                                        <div className="character">
+                                            {item.job}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </>
                 ) : (
                     <div className="castSkeleton">
