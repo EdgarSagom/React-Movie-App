@@ -325,7 +325,7 @@ export default function DetailsBannerTv({ video, crew }) {
                         </div>
                         
                         <div className='infoSeason'>
-                            <span className='allSeason' onClick={() => navigate(`/seasons/${id}`)}>
+                            <span className='allSeason' onClick={() => navigate(`/${mediaType}/${id}/seasons`)}>
                                 See all seasons
                             </span>
                         </div>

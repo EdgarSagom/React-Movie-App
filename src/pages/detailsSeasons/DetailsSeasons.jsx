@@ -13,8 +13,8 @@ import PosterFallBack from '../../assets/no-poster.png';
 
 export default function DetailsSeasons() {
     const { url } = useSelector((state) => state.home);
-    const { id } = useParams();
-    const { data, loading } = useFetch(`/tv/${id}`);
+    const { mediaType, id } = useParams();
+    const { data, loading } = useFetch(`/${mediaType}/${id}`);
     const navigate = useNavigate();
 
     return (
@@ -31,7 +31,7 @@ export default function DetailsSeasons() {
                                 <div className='nameData'>
                                     {`${data?.name} (${dayjs(data?.first_air_date).format('YYYY')})`}
                                 </div>
-                                <div className="back" onClick={() => navigate(`/tv/${id}`)}>
+                                <div className="back" onClick={() => navigate(`/${mediaType}/${id}`)}>
                                     ↤Back to main
                                 </div>
                             </div>
