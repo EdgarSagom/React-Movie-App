@@ -37,6 +37,8 @@ export default function DetailsBannerTv({ video, crew }) {
 
     const lastSeason = data?.seasons[data.seasons.length-1];
 
+    const navigate = useNavigate();
+
     return (
         <div className="detailsBanner">
             {!loading ? (
@@ -294,14 +296,6 @@ export default function DetailsBannerTv({ video, crew }) {
                                             {`${lastSeason?.episode_count} Episodes`}
                                         </span>
                                     </div>
-                                    <div className="overview">
-                                        <div className="heading">
-                                            Overview
-                                        </div>
-                                        <div className="description">
-                                            {lastSeason?.overview}
-                                        </div>
-                                    </div>
                                     <div className='info'>
                                         <span className='text bold'>
                                             Last Episode:
@@ -328,6 +322,12 @@ export default function DetailsBannerTv({ video, crew }) {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        
+                        <div className='infoSeason'>
+                            <span className='allSeason' onClick={() => navigate(`/seasons/${id}`)}>
+                                See all seasons
+                            </span>
                         </div>
 
                         <VideoPopup
