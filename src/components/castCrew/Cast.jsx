@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 
 import './CastCrew.css';
 
-import ContentWrapper from '../../../components/contentWrapper/ContentWrapper';
-import Img from '../../../components/lazyLoadImage/Img';
-import avatar from '../../../assets/avatar.png'
+import ContentWrapper from '../contentWrapper/ContentWrapper';
+import Img from '../lazyLoadImage/Img';
+import avatar from '../../assets/avatar.png';
 
-export default function Crew({ data, loading, mediaType }) {
+export default function Cast({ data, loading }) {
     const {url} = useSelector((state) => state.home);
     const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ export default function Crew({ data, loading, mediaType }) {
             <ContentWrapper>
                 {!loading ? (
                     <>
-                        <div className="sectionHeading">Crew</div>
+                        <div className="sectionHeading">Top Cast</div>
                         <div className="listItems">
                             {data?.map((item) => {
                                 let imgUrl = item.profile_path ? url.profile + item.profile_path : avatar;
@@ -38,7 +38,7 @@ export default function Crew({ data, loading, mediaType }) {
                                         </div>
                                         <div className="name">{item.name}</div>
                                         <div className="character">
-                                            {item.job}
+                                            {item.character}
                                         </div>
                                     </div>
                                 );
