@@ -22,7 +22,7 @@ export default function DetailsSeasons() {
             {!loading ? (
                 <>
                     <div className="backdrop-img">
-                        <Img src={url.backdrop + data?.backdrop_path} />
+                        <Img src={`${url.backdrop + data?.poster_path}`} />
                     </div>
                     <div className="opacity-layer"></div>
                     <ContentWrapper>
@@ -38,12 +38,12 @@ export default function DetailsSeasons() {
 
                             {data?.seasons?.map((item , index) => (
                                 <div className='content' key={index}>
-                                    <div className='left'>
+                                    <div className='left' onClick={() => navigate(`/${mediaType}/${id}/season/${item.season_number}`)}>
                                         <Img className='posterImgSeason' src={item.poster_path !== null ? url.backdrop + item?.poster_path : PosterFallBack} />
                                     </div>
                                     
                                     <div className='right'>
-                                        <div className='title'>
+                                        <div className='title' onClick={() => navigate(`/${mediaType}/${id}/season/${item.season_number}`)}>
                                             {item.name}
                                         </div>
                                         <div className="row">
@@ -57,7 +57,7 @@ export default function DetailsSeasons() {
                                         </div>
                                         <div className='info'>
                                             <span className='text'>
-                                                {`${item.name} of ${data?.name} premiered on ${item.air_date !== null ? item.air_date : ''}`}
+                                                {`${item.name} of ${data?.name} premiered on ${item.air_date !== null ? item.air_date : '-'}`}
                                             </span>
                                         </div>
                                     </div>

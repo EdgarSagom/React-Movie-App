@@ -10,6 +10,7 @@ import Footer from './components/footer/Footer';
 import Home from './pages/home/Home';
 import Details from './pages/details/Details';
 import DetailsSeasons from './pages/detailsSeasons/DetailsSeasons';
+import DetailsSeason from './pages/detailsSeason/DetailsSeason';
 import SearchResult from './pages/searchResult/SearchResult';
 import Explore from './pages/explore/Explore';
 import ExplorePerson from './pages/explorePerson/ExplorePerson';
@@ -65,6 +66,7 @@ function App() {
                 <Route path='/' element={ <Home /> } />
                 <Route path='/:mediaType/:id' element={ <Details /> } />
                 <Route path='/:mediaType/:id/seasons' element={ <DetailsSeasons /> } />
+                <Route path='/:mediaType/:id/season/:item' element={ <DetailsSeason /> } />
                 <Route path='/search/:query' element={ <SearchResult /> } />
                 <Route path='/explore/:mediaType' element={ <Explore /> } />
                 <Route path='/explorePerson' element={ <ExplorePerson /> } />

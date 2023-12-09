@@ -1,31 +1,29 @@
-.detailsSeasons {
+.detailsSeason {
     width: 100%;
     background-color: var(--black);
     padding-top: 100px;
     margin-bottom: 50px;
     color: white;
 }
-.detailsSeasons .backdrop-img {
+.detailsSeason .backdrop-img {
     width: 100%;
-    height: 100%;
     position: absolute;
     top: 0;
     right: 0;
     opacity: .1;
     overflow: hidden;
 }
-.detailsSeasons .backdrop-img .lazy-load-image-background {
+.detailsSeason .backdrop-img .lazy-load-image-background {
     width: 100%;
     height: 100%;
 }
-.detailsSeasons .backdrop-img .lazy-load-image-background img {
+.detailsSeason .backdrop-img .lazy-load-image-background img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
 }
 
-.detailsSeasons .opacity-layer {
+.detailsSeason .opacity-layer {
     width: 100%;
     height: 250px;
     background: linear-gradient(
@@ -38,79 +36,106 @@
     left: 0;
 }
 
-.detailsSeasons .seasonName {
+.detailsSeason .seasonName {
     display: flex;
     flex-direction: column;
     position: relative;
     text-align: center;
 }
-.detailsSeasons .seasonName .nameData {
+.detailsSeason .seasonName .nameData {
     font-size: 35px;
     margin-bottom: 20px;
 }
-.detailsSeasons .seasonName .back {
-    width: 180px;
+.detailsSeason .seasonName .back {
+    width: 260px;
     font-size: 24px;
     cursor: pointer;
 }
-.detailsSeasons .seasonName .back:hover {
+.detailsSeason .seasonName .back:hover {
     color: var(--red);
 }
 
-.detailsSeasons .infoSeason .content {
+.detailsSeason .infoSeason .content {
     display: flex;
     position: relative;
     flex-direction: column;
-    margin: 50px 0;
+    margin-top: 50px;
     padding: 15px;
     text-align: center;
     align-items: center;
     border: 2px solid var(--red);
-    border-radius: 12px;
-    box-shadow: 0 0px 15px 0 var(--red),
-                0 0px 50px 0 var(--black);
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -5px 15px 0 var(--red),
+                0 -5px 50px 0 var(--black);
 }
 
-.detailsSeasons .content .left .posterImgSeason {
-    width: 150px;
+.detailsSeason .content .left .posterImgSeason {
+    width: 250px;
+    display: block;
     border-radius: 12px;
-    margin: 20px 50px;
-    box-shadow: 0 0 15px 0 var(--yellow),
-                0 0 50px 0 var(--red);
-    cursor: pointer;
+    margin: 20px 10px;
 }
 
-.detailsSeasons .content .right .title {
+.detailsSeason .content .right .title {
     font-size: 25px;
     line-height: 40px;
-    cursor: pointer;
-}
-.detailsSeasons .content .right .title:hover {
-    color: var(--red);
 }
 
-.detailsSeasons .content .right .row {
+.detailsSeason .content .right .row {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 25px;
 }
-.detailsSeasons .content .right .row .circleRating {
+.detailsSeason .content .right .row .circleRating {
     max-width: 50px;
     background-color: var(--black2);
 }
-.detailsSeasons .content .right .row .circleRating .CircularProgressbar-text {
+.detailsSeason .content .right .row .circleRating .CircularProgressbar-text {
     fill: white;
 }
-.detailsSeasons .content .right .row .subtitle {
+.detailsSeason .content .right .row .subtitle {
     font-size: 16px;
     line-height: 24px;
 }
 
-.detailsSeasons .content .right .info .text {
+.detailsSeason .content .overview .heading {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.detailsSeason .content .overview .description {
+    font-size: 16px;
     line-height: 24px;
-    margin: auto;
-    font-weight: 600;
+}
+
+.detailsSeason .infoSeason .contentMore {
+    position: relative;
+    margin-top: -2px;
+    padding: 15px;
+    text-align: center;
+    border: 2px solid var(--red);
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 5px 15px 0 var(--red),
+                0 5px 50px 0 var(--black);
+}
+.detailsSeason .infoSeason .contentMore .hidden {
+    display: none;
+}
+.detailsSeason .infoSeason .contentMore .readMoreBtn {
+    position: relative;
+    background-color: var(--black);
+    color: var(--red);
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 0 0 10px 0 var(--red);
+    cursor: pointer;
+}
+.detailsSeason .infoSeason .contentMore .readMoreBtn:hover {
+    background-color: var(--red);
+    color: var(--black);
 }
 
 .detailsBannerSkeleton {
@@ -148,50 +173,59 @@
     margin-bottom: 50px;
 }
 
-@media(min-width: 768px) {
-    .detailsSeasons {
+@media(min-width: 769px) {
+    .detailsSeason {
         margin-bottom: 0;
         padding-top: 120px;
         min-height: 700px;
     }
 
-    .detailsSeasons .seasonName .nameData {
+    .detailsSeason .seasonName .nameData {
         font-size: 55px;
         text-align: start;
     }
 
-    .detailsSeasons .infoSeason .content {
-        gap: 50px;
+    .detailsSeason .infoSeason .content {
         flex-direction: row;
         text-align: start;
-        margin: 50px 50px;
+        margin: 50px 50px 0;
     }
 
-    .detailsSeasons .content .left .posterImgSeason {
-        width: 180px;
+    .detailsSeason .content .left .posterImgSeason {
+        width: 320px;
+        margin: 20px 35px;
     }
 
-    .detailsSeasons .content .right .title {
+    .detailsSeason .content .right .title {
         font-size: 34px;
         line-height: 44px;
         margin-bottom: 20px;
     }
 
-    .detailsSeasons .content .right .row {
+    .detailsSeason .content .right .row {
         justify-content: start;
         margin-bottom: 20px;
     }
-    .detailsSeasons .content .right .row .circleRating {
+    .detailsSeason .content .right .row .circleRating {
         max-width: 90px;
     }
-    .detailsSeasons .content .right .row .subtitle {
+    .detailsSeason .content .right .row .subtitle {
         font-size: 20px;
         line-height: 28px;
         text-align: center;
     }
 
-    .detailsSeasons .content .right .info .text {
-        margin: 0 10px 0 0;
+    .detailsSeason .content .overview .description {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .detailsSeason .infoSeason .contentMore {
+        margin: -2px 50px 0;
+    }
+    .detailsSeason .infoSeason .contentMore .readMoreBtn {
+        font-size: 20px;
+        line-height: 28px;
     }
 
     .detailsBannerSkeleton {

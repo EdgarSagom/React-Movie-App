@@ -212,8 +212,8 @@
     display: block;
     border-radius: 12px;
     margin: 20px auto;
-    box-shadow: 5px 5px 10px var(--yellow),
-    5px 5px 50px var(--red);
+    box-shadow: 0 0 15px 0 var(--yellow),
+                0 0 50px 0 var(--red);
 }
 
 .detailsBanner .content .episodeType {

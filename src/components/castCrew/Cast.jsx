@@ -8,7 +8,7 @@ import ContentWrapper from '../contentWrapper/ContentWrapper';
 import Img from '../lazyLoadImage/Img';
 import avatar from '../../assets/avatar.png';
 
-export default function Cast({ data, loading }) {
+export default function Cast({ data, loading, title }) {
     const {url} = useSelector((state) => state.home);
     const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ export default function Cast({ data, loading }) {
             <ContentWrapper>
                 {!loading ? (
                     <>
-                        <div className="sectionHeading">Top Cast</div>
+                        <div className="sectionHeading">{title === 'Guest Stars' ? 'Guest Stars' : 'Top Cast'}</div>
                         <div className="listItems">
                             {data?.map((item) => {
                                 let imgUrl = item.profile_path ? url.profile + item.profile_path : avatar;
