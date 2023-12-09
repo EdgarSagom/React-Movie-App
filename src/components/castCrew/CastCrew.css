@@ -1,11 +1,36 @@
 .castSection {
     position: relative;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
+.castSection .contentWrapper{
+    position: relative;
+}
+
 .castSection .sectionHeading {
     font-size: 24px;
     color: white;
     margin-bottom: 25px;
+}
+
+.castSection .contentWrapper .arrow {
+    font-size: 40px;
+    color: var(--yellow);
+    position: absolute;
+    cursor: pointer;
+    opacity: .5;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+}
+.castSection .contentWrapper .arrow:hover {
+    opacity: .8;
+}
+.castSection .contentWrapper .carouselLeftNav {
+    left: 30px;
+}
+.castSection .contentWrapper .carouselRightNav {
+    right: 30px;
 }
 
 .castSection .listItems {
@@ -79,6 +104,9 @@
     .castSection .listItems {
         margin: 0;
         padding: 0;
+    }
+    .castSection .contentWrapper .arrow {
+        display: block;
     }
 
     .castSection .listItems .item .profileImg {

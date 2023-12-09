@@ -1,6 +1,7 @@
-import React from 'react';
+import { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs";
 
 import './CastCrew.css';
 
@@ -9,8 +10,20 @@ import Img from '../lazyLoadImage/Img';
 import avatar from '../../assets/avatar.png';
 
 export default function Cast({ data, loading, title }) {
+    const carouselContainer = useRef();
     const {url} = useSelector((state) => state.home);
     const navigate = useNavigate();
+    
+    const navigation = (direction) => {
+        const container = carouselContainer.current;
+
+        const scrollAmount = direction === 'left' ? container.scrollLeft - (container.offsetWidth + 20) : container.scrollLeft + (container.offsetWidth + 20);
+
+        container.scrollTo({
+            left: scrollAmount,
+            behavior: 'smooth',
+        });
+    };
 
     const skeleton = () => {
         return (
@@ -28,7 +41,15 @@ export default function Cast({ data, loading, title }) {
                 {!loading ? (
                     <>
                         <div className="sectionHeading">{title === 'Guest Stars' ? 'Guest Stars' : 'Top Cast'}</div>
-                        <div className="listItems">
+                        <BsFillArrowLeftCircleFill
+                            className='arrow carouselLeftNav'
+                            onClick={() => navigation('left')}
+                        />
+                        <BsFillArrowRightCircleFill
+                            className='arrow carouselRightNav'
+                            onClick={() => navigation('right')}
+                        />
+                        <div className="listItems" ref={carouselContainer}>
                             {data?.map((item) => {
                                 let imgUrl = item.profile_path ? url.profile + item.profile_path : avatar;
                                 return (
