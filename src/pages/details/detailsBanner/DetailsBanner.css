@@ -186,7 +186,7 @@
     font-size: 10px;
 }
 .detailsBanner .content .containerLogo .logo {
-    width: 12rem;
+    width: 10rem;
 }
 
 .detailsBanner .infoSeason {
@@ -199,10 +199,12 @@
     margin-bottom: 25px;
 }
 .detailsBanner .infoSeason .content {
-    border: 5px solid var(--red);
-    border-radius: 12px;
     padding: 10px;
     text-align: center;
+    border: 2px solid var(--red);
+    border-radius: 12px;
+    box-shadow: 0 0 15px 0 var(--red),
+                0 0 50px 0 var(--black);
 }
 .detailsBanner .infoSeason .content .row {
     justify-content: center;

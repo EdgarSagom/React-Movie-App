@@ -7,6 +7,7 @@ import { getDataFromApi } from '../../hooks/dataApi';
 import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
 import Spinner from '../../components/spinner/Spinner';
 import PeopleCard from '../../components/peopleCard/PeopleCard';
+import ScrollButton from '../../components/scrollButton/ScrollButton';
 
 export default function ExplorePerson() {
     const [data, setData] = useState([]);
@@ -26,6 +27,9 @@ export default function ExplorePerson() {
 
     return (
         <div className='explorePage'>
+            <div>
+                <ScrollButton />
+            </div>
             <ContentWrapper>
                 <div className="pageHeader">
                     <div className="pageTitle">

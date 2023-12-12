@@ -13,6 +13,7 @@ import Img from '../../components/lazyLoadImage/Img';
 import PosterFallBack from '../../assets/no-poster-still.png';
 import Cast from '../../components/castCrew/Cast';
 import Crew from '../../components/castCrew/Crew';
+import ScrollButton from '../../components/scrollButton/ScrollButton';
 
 export default function DetailsSeason() {
     const { url } = useSelector((state) => state.home);
@@ -37,6 +38,9 @@ export default function DetailsSeason() {
                     <div className="backdrop-img">
                         <Img src={`${url.backdrop + data?.poster_path}`} />
                         <div className="opacity-layer"></div>
+                    </div>
+                    <div>
+                        <ScrollButton />
                     </div>
                     <ContentWrapper>
                         <div className='infoSeason'>

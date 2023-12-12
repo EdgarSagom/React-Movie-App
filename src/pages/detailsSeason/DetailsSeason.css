@@ -74,6 +74,8 @@
     display: block;
     border-radius: 12px;
     margin: 20px 10px;
+    box-shadow: 0 0 15px 0 var(--yellow),
+                0 0 50px 0 var(--red);
 }
 
 .detailsSeason .content .right .title {
@@ -111,7 +113,7 @@
 .detailsSeason .infoSeason .contentMore {
     position: relative;
     margin-top: -2px;
-    padding: 15px;
+    padding: 15px 25px;
     text-align: center;
     border: 2px solid var(--red);
     border-radius: 0 0 12px 12px;
@@ -175,7 +177,7 @@
 
 @media(min-width: 769px) {
     .detailsSeason {
-        margin-bottom: 0;
+        margin-bottom: 50px;
         padding-top: 120px;
         min-height: 700px;
     }

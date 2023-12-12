@@ -15,6 +15,7 @@ import Recommendation from './carousels/Recommendation';
 import DetailsBannerPerson from './detailsBanner/DetailsBannerPerson';
 import ImagesPerson from './imagesPerson/imagesPerson';
 import KnownFor from './knownFor/KnownFor';
+import ScrollButton from '../../components/scrollButton/ScrollButton';
 
 export default function Details() {
     const { mediaType, id} = useParams();
@@ -25,6 +26,7 @@ export default function Details() {
         <div>
             {mediaType === 'movie' && (
                 <>
+                    <ScrollButton />
                     <DetailsBanner video={data?.results?.[0]} crew={credits?.crew} />
                     <Cast data={credits?.cast} loading={creditsLoading} mediaType={mediaType} />
                     <Crew data={credits?.crew} loading={creditsLoading} mediaType={mediaType} />
@@ -36,6 +38,7 @@ export default function Details() {
 
             {mediaType === 'tv' && (
                 <>
+                    <ScrollButton />
                     <DetailsBannerTv video={data?.results?.[0]} crew={credits?.crew} />
                     <Cast data={credits?.cast} loading={creditsLoading} mediaType={mediaType} />
                     <Crew data={credits?.crew} loading={creditsLoading} mediaType={mediaType} />
@@ -47,6 +50,7 @@ export default function Details() {
 
             {mediaType === 'person' && (
                 <>
+                    <ScrollButton />
                     <DetailsBannerPerson />
                     <ImagesPerson id={id} loading={loading} mediaType={mediaType} />
                     <KnownFor data={credits} loading={creditsLoading} mediaType={mediaType} />

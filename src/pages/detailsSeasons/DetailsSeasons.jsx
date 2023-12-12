@@ -10,6 +10,7 @@ import useFetch from '../../hooks/useFetch';
 import { CircleRating } from '../../components/circleRating/CircleRating';
 import Img from '../../components/lazyLoadImage/Img';
 import PosterFallBack from '../../assets/no-poster.png';
+import ScrollButton from '../../components/scrollButton/ScrollButton';
 
 export default function DetailsSeasons() {
     const { url } = useSelector((state) => state.home);
@@ -34,6 +35,9 @@ export default function DetailsSeasons() {
                                 <div className="back" onClick={() => navigate(`/${mediaType}/${id}`)}>
                                     ↤Back to main
                                 </div>
+                            </div>
+                            <div>
+                                <ScrollButton />
                             </div>
 
                             {data?.seasons?.map((item , index) => (

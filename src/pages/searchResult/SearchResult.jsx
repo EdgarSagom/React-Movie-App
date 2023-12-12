@@ -9,6 +9,7 @@ import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 import MovieCard from "../../components/movieCard/MovieCard";
 import PeopleCard from '../../components/peopleCard/PeopleCard';
 import Spinner from "../../components/spinner/Spinner";
+import ScrollButton from '../../components/scrollButton/ScrollButton';
 
 export default function SearchResult() {
     const [data, setData] = useState(null);
@@ -52,6 +53,9 @@ export default function SearchResult() {
                 <ContentWrapper>
                     {data?.results?.length > 0 ? (
                         <>
+                            <div>
+                                <ScrollButton />
+                            </div>
                             <div className='pageTitle'>
                                 {`Search ${data?.total_results > 1 ? 'results' : 'result'} of '${query}'`}
                             </div>

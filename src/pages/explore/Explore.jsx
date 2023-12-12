@@ -11,6 +11,7 @@ import { getDataFromApi } from '../../hooks/dataApi';
 import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
 import MovieCard from '../../components/movieCard/MovieCard';
 import Spinner from '../../components/spinner/Spinner';
+import ScrollButton from '../../components/scrollButton/ScrollButton';
 
 const animatedComponents = makeAnimated();
 
@@ -100,6 +101,9 @@ export default function Explore() {
     return (
         <div className='explorePage'>
             <ContentWrapper>
+                <div>
+                    <ScrollButton />
+                </div>
                 <div className="pageHeader">
                     <div className="pageTitle">
                         {mediaType === 'tv' ? 'Explore TV Series' : 'Explore Movies'}
