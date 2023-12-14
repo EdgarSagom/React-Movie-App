@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
+import { FaArrowLeft } from "react-icons/fa6";
 
 import './DetailsSeasons.css';
 
@@ -27,13 +28,14 @@ export default function DetailsSeasons() {
                     </div>
                     <div className="opacity-layer"></div>
                     <ContentWrapper>
-                        <div className='infoSeason'>
+                        <div className='infoSeasons'>
                             <div className='seasonName'>
                                 <div className='nameData'>
                                     {`${data?.name} (${dayjs(data?.first_air_date).format('YYYY')})`}
                                 </div>
                                 <div className="back" onClick={() => navigate(`/${mediaType}/${id}`)}>
-                                    ↤Back to main
+                                    <FaArrowLeft />
+                                    <span>Back to main</span>
                                 </div>
                             </div>
                             <div>

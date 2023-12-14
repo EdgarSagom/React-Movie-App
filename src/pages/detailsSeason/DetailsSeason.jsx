@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
+import { FaArrowLeft } from "react-icons/fa6";
 
 import './DetailsSeason.css';
 
@@ -22,13 +23,13 @@ export default function DetailsSeason() {
     const navigate = useNavigate();
     const [dropdown, setDropdown] = useState(false);
 
-    console.log(data);
+    // console.log(data);
 
     const clickHandler = (index) => {
         setDropdown((prev) => {
             return prev === index ? null : index;
         });
-        console.log('clicked', index);
+        // console.log('clicked', index);
     };
 
     return (
@@ -49,7 +50,8 @@ export default function DetailsSeason() {
                                     {`${data?.name} ${data?.air_date !== null ? `(${dayjs(data?.air_date).format('YYYY')})` : ''}`}
                                 </div>
                                 <div className="back" onClick={() => navigate(`/${mediaType}/${id}/seasons`)}>
-                                    ↤Back to Season List
+                                    <FaArrowLeft />
+                                    <span>Back to Season List</span>
                                 </div>
                             </div>
 
@@ -70,7 +72,7 @@ export default function DetailsSeason() {
                                                     {item.air_date !== null ? item.air_date : ''}
                                                 </span>
                                                 <span className='subtitle'>
-                                                    {`${item.runtime}m`}
+                                                    {item.runtime !== null ? `${item.runtime}m` : ''}
                                                 </span>
                                             </div>
                                             <div className="overview">

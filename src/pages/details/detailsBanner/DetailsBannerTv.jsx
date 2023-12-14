@@ -280,11 +280,13 @@ export default function DetailsBannerTv({ video, crew }) {
                                 Last Season
                             </div>
                             <div className='content'>
-                                <div className='left'>
-                                    <Img className='posterImg posterImgSeason' src={lastSeason?.poster_path !== null ? url.backdrop + lastSeason?.poster_path : PosterFallBack} />
+                                <div className='left' onClick={() => navigate(`/${mediaType}/${id}/season/${lastSeason.season_number}`)}>
+                                    <Img className='posterImg posterImgSeason' 
+                                        src={lastSeason?.poster_path !== null ? url.backdrop + lastSeason?.poster_path : PosterFallBack}
+                                    />
                                 </div>
                                 <div className='right'>
-                                    <div className='title'>
+                                    <div className='title' onClick={() => navigate(`/${mediaType}/${id}/season/${lastSeason.season_number}`)}>
                                         {`Season ${data?.next_episode_to_air !== null ? data?.next_episode_to_air.season_number : data?.last_episode_to_air.season_number}`}
                                     </div>
                                     <div className="row">
