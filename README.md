@@ -1,29 +1,60 @@
-# React + Vite
+# React Movie App
 
-    npm create vite@latest
+React Movie App is a responsive [React](https://react.dev/) application that uses dependencies, we can search for Movies, TV series and People by uploading data through [The Movie Database (TMDB) API](https://developer.themoviedb.org/docs).
 
-# NPM Package
+![](./src/assets/screenshot1.png)
 
-    npm install
+![](./src/assets/screenshot2.png)
 
-    npm install @reduxjs/toolkit react-redux
+[TOCM]
 
-    npm install react-icons --save
+[TOC]
 
-    npm i react-router-dom
+## Demo
 
-    npm i --save react-lazy-load-image-component
+React Movie App [CinemaSagom](https://edgarsagom.github.io/React-Movie-App)
 
-    npm i react-circular-progressbar
+## Installation
 
-    npm install dayjs
+If you would like to download the code and try it for yourself:
 
-    npm install react-player
+1. Clone the repo: https://github.com/EdgarSagom/React-Movie-App.git
+2. cd React-Movie-App
+3. Install packages: NPM Packages
+4. Create Read Access Token to [The Movie Database (TMDB) API](https://developer.themoviedb.org/docs).
+5. Create a .env.local file and put the Read Access Token to the API:
+   ```javascript
+   VITE_APP_TOKEN = Token;
+   ```
+6. Build project and launch
+7. Open your browser with:
 
-    npm install --save react-infinite-scroll-component
+   - npm run dev
+   - click on: http://localhost:
 
-    npm install axios
+## NPM Packages
 
-    npm i react-select
+- npm install
+- npm install @reduxjs/toolkit react-redux
+- npm install react-icons --save
+- npm i react-router-dom
+- npm i --save react-lazy-load-image-component
+- npm i react-circular-progressbar
+- npm install dayjs
+- npm install react-player
+- npm install --save react-infinite-scroll-component
+- npm install axios
+- npm i react-select
+- npm i react-viewerjs
 
-    npm i react-viewerjs
+## Create from start
+
+If you want to create the code from scratch in React + Vite:
+
+1. npm create vite@latest
+2. Create Read Access Token to [The Movie Database (TMDB) API](https://developer.themoviedb.org/docs).
+3. Create a .env.local file and put the Read Access Token to the API:
+   ```javascript
+   VITE_APP_TOKEN = Token;
+   ```
+4. Follow what is done in the commits
