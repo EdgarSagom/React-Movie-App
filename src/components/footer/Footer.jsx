@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 import './Footer.css';
 
@@ -23,21 +24,17 @@ export default function Footer() {
                     <li className="item">FAQ</li>
                 </ul>
                 <div className="infoText">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, aspernatur optio. Laborum, dicta doloremque ipsum delectus quaerat vero cumque quo dolorum nihil commodi, dignissimos eveniet quasi quam error debitis officia.
+                    <div>
+                        This product uses the TMDB API but is not endorsed or certified by
+                        <Link to={'https://www.themoviedb.org'}><img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="" /></Link>
+                        .
+                    </div>
+                    
                 </div>
                 <div className="socialIcons">
-                    <span className="icon">
-                        <FaInstagram />
-                    </span>
-                    <span className="icon">
-                        <FaXTwitter />
-                    </span>
-                    <span className="icon">
-                        <FaGithub />
-                    </span>
-                    <span className="icon">
-                        <FaLinkedin />
-                    </span>
+                    <Link to={'https://www.instagram.com/edgarsagom/'} className="icons"> <FaInstagram className='icon'/> </Link>
+                    <Link to={'https://twitter.com/SagomEdgar'} className="icons"> <FaXTwitter className='icon'/> </Link>
+                    <Link to={'https://github.com/EdgarSagom'} className="icons"> <FaGithub className='icon'/> </Link>
                 </div>
             </ContentWrapper>
         </footer>
