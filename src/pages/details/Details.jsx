@@ -13,7 +13,7 @@ import Similar from './carousels/Similar';
 import Recommendation from './carousels/Recommendation';
 
 import DetailsBannerPerson from './detailsBanner/DetailsBannerPerson';
-import ImagesPerson from './imagesPerson/imagesPerson';
+import ImagesPerson from './imagesPerson/ImagesPerson';
 import KnownFor from './knownFor/KnownFor';
 import ScrollButton from '../../components/scrollButton/ScrollButton';
 

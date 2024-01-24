@@ -35,9 +35,6 @@ export default function ImagesPerson({ id, loading, mediaType }) {
     return (
         <div className='imagesSection'>
             <ContentWrapper>
-                {loading && (
-                    <Spinner />
-                )}
                 {!loading && (
                     <>
                         {mediaType === 'person' && (
